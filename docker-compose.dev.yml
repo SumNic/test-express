@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      target: builder
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: >
+      sh -c "
+        npx prisma migrate dev --name init &&
+        npm run dev
+      "

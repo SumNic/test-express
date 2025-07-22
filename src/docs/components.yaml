@@ -1,0 +1,48 @@
+components:
+  schemas:
+    RegisterInput:
+      type: object
+      required:
+        - fullName
+        - birthDate
+        - email
+        - password
+        - role
+      properties:
+        fullName:
+          type: string
+          example: Иван Иванов
+        birthDate:
+          type: string
+          format: date
+          example: 2000-01-01
+        email:
+          type: string
+          format: email
+          example: ivan@example.com
+        password:
+          type: string
+          format: password
+          example: securepass123
+        role:
+          type: string
+          example: USER
+    LoginInput:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: ivan@example.com
+        password:
+          type: string
+          format: password
+          example: securepass123
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
